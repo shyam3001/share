@@ -1,3 +1,6 @@
+# run (console output): python extract.py submission-folder-name
+# run (file output): python extract.py submission-folder-name > result-file.txt
+
 import os
 import re
 import sys
