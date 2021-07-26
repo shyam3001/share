@@ -1,5 +1,6 @@
 import csv
 
+
 def grade(mark):
     if mark >= 90:
         return 'A+'
@@ -26,46 +27,53 @@ def grade(mark):
     else:
         return 'F'
 
+
 def calculate(marks):
-    final_mark = float(marks[0])*0.3 + float(marks[1])*0.3 + float(marks[2])*0.4
+    final_mark = float(marks[0]) * 0.3 + float(marks[1]) * 0.3 + float(marks[2]) * 0.4
     return [round(final_mark, 2), grade(final_mark)]
 
-with open('File1.csv') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    data1 = list(csv_reader)
-    headers1 = [data1[0]]
-    list1 = data1[1:]
-    dict1 = {list1[x][0]: list1[x][1:3] for x in range(len(list1))}
 
-with open('File2.csv') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    data2 = list(csv_reader)
-    headers2 = [data2[0]]
-    list2 = data2[1:]
-    dict2 = {list2[x][0]: [list2[x][1]] for x in range(len(list2))}
+def main():
+    with open('File1.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        data1 = list(csv_reader)
+        headers1 = [data1[0]]
+        list1 = data1[1:]
+        dict1 = {list1[x][0]: list1[x][1:3] for x in range(len(list1))}
 
-with open('File3.csv') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
-    data3 = list(csv_reader)
-    headers3 = [data3[0]]
-    list3 = data3[1:]
-    dict3 = {list3[x][0]: [list3[x][1]] for x in range(len(list3))}
+    with open('File2.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        data2 = list(csv_reader)
+        headers2 = [data2[0]]
+        list2 = data2[1:]
+        dict2 = {list2[x][0]: [list2[x][1]] for x in range(len(list2))}
 
-result = {}
+    with open('File3.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        data3 = list(csv_reader)
+        headers3 = [data3[0]]
+        list3 = data3[1:]
+        dict3 = {list3[x][0]: [list3[x][1]] for x in range(len(list3))}
 
-for key in set().union(dict1, dict2, dict3):
-    if key in dict1: result.setdefault(key, []).extend(dict1[key])
-    if key in dict2: result.setdefault(key, []).extend(dict2[key])
-    if key in dict3: result.setdefault(key, []).extend(dict3[key])
+    result = {}
 
-result_list = [[key, *(result[key]), *calculate(result[key][1:])] for key in result]
+    for key in set().union(dict1, dict2, dict3):
+        if key in dict1: result.setdefault(key, []).extend(dict1[key])
+        if key in dict2: result.setdefault(key, []).extend(dict2[key])
+        if key in dict3: result.setdefault(key, []).extend(dict3[key])
 
-headers = []
-headers.extend(*headers1)
-headers.append(headers2[0][1])
-headers.append(headers3[0][1])
+    result_list = [[key, *(result[key]), *calculate(result[key][1:])] for key in result]
 
-with open('student.csv', 'w', newline ='') as f:
-    write = csv.writer(f)
-    write.writerow(headers)
-    write.writerows(result_list)
+    headers = []
+    headers.extend(*headers1)
+    headers.append(headers2[0][1])
+    headers.append(headers3[0][1])
+
+    with open('student.csv', 'w', newline='') as f:
+        write = csv.writer(f)
+        write.writerow(headers)
+        write.writerows(result_list)
+
+
+if __name__ == "__main__":
+    main()
