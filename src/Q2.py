@@ -1,5 +1,35 @@
 import csv
 
+def grade(mark):
+    if mark >= 90:
+        return 'A+'
+    elif mark >= 80:
+        return 'A'
+    elif mark >= 75:
+        return 'A-'
+    elif mark >= 70:
+        return 'B+'
+    elif mark >= 65:
+        return 'B'
+    elif mark >= 60:
+        return 'B-'
+    elif mark >= 55:
+        return 'C+'
+    elif mark >= 45:
+        return 'C'
+    elif mark >= 40:
+        return 'C-'
+    elif mark >= 35:
+        return 'D+'
+    elif mark >= 30:
+        return 'D'
+    else:
+        return 'F'
+
+def calculate(marks):
+    final_mark = float(marks[0])*0.3 + float(marks[1])*0.3 + float(marks[2])*0.4
+    return [round(final_mark, 2), grade(final_mark)]
+
 with open('File1.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     data1 = list(csv_reader)
@@ -28,7 +58,7 @@ for key in set().union(dict1, dict2, dict3):
     if key in dict2: result.setdefault(key, []).extend(dict2[key])
     if key in dict3: result.setdefault(key, []).extend(dict3[key])
 
-result_list = [[key, *(result[key])] for key in result]
+result_list = [[key, *(result[key]), *calculate(result[key][1:])] for key in result]
 
 headers = []
 headers.extend(*headers1)
