@@ -2,28 +2,10 @@ import csv
 
 
 def grade(mark):
-    if mark >= 90:
-        return 'A+'
-    elif mark >= 80:
-        return 'A'
-    elif mark >= 75:
-        return 'A-'
-    elif mark >= 70:
-        return 'B+'
-    elif mark >= 65:
-        return 'B'
-    elif mark >= 60:
-        return 'B-'
-    elif mark >= 55:
-        return 'C+'
-    elif mark >= 45:
-        return 'C'
-    elif mark >= 40:
-        return 'C-'
-    elif mark >= 35:
-        return 'D+'
-    elif mark >= 30:
-        return 'D'
+    grade_table = [(90, 'A+'), (80, 'A'), (75, 'A-'), (70, 'B+'), (65, 'B'), (60, 'B-'), (55, 'C+'), (45, 'C'), (40, 'C-'), (35, 'D'), (30, 'E')]
+    for v, g in grade_table:
+        if mark >= v:
+            return g
     else:
         return 'F'
 
@@ -54,16 +36,14 @@ def main():
     headers3, dict3 = file_read('File3.csv')
 
     result = {}
-
     for key in set().union(dict1, dict2, dict3):
         if key in dict1: result.setdefault(key, []).extend(dict1[key])
         if key in dict2: result.setdefault(key, []).extend(dict2[key])
         if key in dict3: result.setdefault(key, []).extend(dict3[key])
-
     # print(result)
+
     # result_list = [[key, *(result[key])] for key in result]
     result_list = [[key, *(result[key]), *calculate(result[key][1:])] for key in result]
-
     # print(result_list)
 
     headers = []
