@@ -30,4 +30,12 @@ for key in set().union(dict1, dict2, dict3):
 
 result_list = [[key, *(result[key])] for key in result]
 
-print(result_list)
+headers = []
+headers.extend(*headers1)
+headers.append(headers2[0][1])
+headers.append(headers3[0][1])
+
+with open('student.csv', 'w', newline ='') as f:
+    write = csv.writer(f)
+    write.writerow(headers)
+    write.writerows(result_list)
