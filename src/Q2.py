@@ -33,27 +33,25 @@ def calculate(marks):
     return [round(final_mark, 2), grade(final_mark)]
 
 
+def file_read(file_name):
+    with open(file_name) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        data = list(csv_reader)
+        headers = [data[0]]
+        data_list = data[1:]
+        # print(headers)
+        # print(data_list)
+
+        data_dict = {data_list[x][0]: data_list[x][1:3] for x in range(len(data_list))}
+        # print(data_dict)
+
+        return headers, data_dict
+
+
 def main():
-    with open('File1.csv') as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        data1 = list(csv_reader)
-        headers1 = [data1[0]]
-        list1 = data1[1:]
-        dict1 = {list1[x][0]: list1[x][1:3] for x in range(len(list1))}
-
-    with open('File2.csv') as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        data2 = list(csv_reader)
-        headers2 = [data2[0]]
-        list2 = data2[1:]
-        dict2 = {list2[x][0]: [list2[x][1]] for x in range(len(list2))}
-
-    with open('File3.csv') as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        data3 = list(csv_reader)
-        headers3 = [data3[0]]
-        list3 = data3[1:]
-        dict3 = {list3[x][0]: [list3[x][1]] for x in range(len(list3))}
+    headers1, dict1 = file_read('File1.csv')
+    headers2, dict2 = file_read('File2.csv')
+    headers3, dict3 = file_read('File3.csv')
 
     result = {}
 
@@ -62,7 +60,11 @@ def main():
         if key in dict2: result.setdefault(key, []).extend(dict2[key])
         if key in dict3: result.setdefault(key, []).extend(dict3[key])
 
+    # print(result)
+    # result_list = [[key, *(result[key])] for key in result]
     result_list = [[key, *(result[key]), *calculate(result[key][1:])] for key in result]
+
+    # print(result_list)
 
     headers = []
     headers.extend(*headers1)
