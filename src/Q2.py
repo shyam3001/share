@@ -28,4 +28,6 @@ for key in set().union(dict1, dict2, dict3):
     if key in dict2: result.setdefault(key, []).extend(dict2[key])
     if key in dict3: result.setdefault(key, []).extend(dict3[key])
 
-print(result)
+result_list = [[key, *(result[key])] for key in result]
+
+print(result_list)
