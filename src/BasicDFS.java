@@ -41,14 +41,14 @@ public class BasicDFS {
                 int w = in.nextInt();
                 arr[st][et] = w;
             }
+            for (int i=1; i<=N; i++) {
+                for (int j = 1; j <= N; j++)
+                    System.out.print(arr[i][j] + " ");
+                System.out.println();
+            }
+            System.out.println();
 
-//            for (int i=1; i<=N; i++) {
-//                for (int j = 1; j <= N; j++)
-//                    System.out.print(arr[i][j] + " ");
-//                System.out.println();
-//            }
-
-            rec(1,5);
+            rec(1,6);
         }
         catch(Exception e) {
             e.printStackTrace();
