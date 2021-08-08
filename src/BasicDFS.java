@@ -1,4 +1,6 @@
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class BasicDFS {
@@ -6,14 +8,31 @@ public class BasicDFS {
     static int[][] arr;
     static int[] path;
     static int p, N, E;
+    static ArrayList<Integer> al = new ArrayList<>();                           //
+    static int min = -1;                                                        //
+    static HashMap<String, Integer> hm = new HashMap<>();                       //
+
 
     static void rec(int cur, int end) {
         // if we have reached the end node, the we print the path and exit
         if (cur == end) {
-            for (int i=0; i<p; i++) {
+            int sum = 0;                                                        //
+            int i;                                                              //
+            String s = "";                                                      //
+            for (i=0; i<p; i++) {
                 System.out.print(path[i] + ", ");
+                s += Integer.toString(path[i]);                                 //
+                sum += arr[i][i+1];                                             //
             }
-            System.out.println(end);
+            sum+=arr[i][end];                                                   //
+            s += Integer.toString(end);                                         //
+            hm.put(s, sum);                                                     //
+
+            if(min == -1 || min > sum)                                          //
+                min= sum;                                                       //
+
+            al.add(sum);                                                        //
+            System.out.println(end + "  Distance: " + sum);                     //
             return;
         }
 
@@ -71,5 +90,22 @@ public class BasicDFS {
 
         // recurse from node 1 to until we find node 6
         rec(1,6);
+
+        //-----------------------------------------------------------------------
+        hm.forEach((key, value) -> {
+            if (value.equals(min)) {
+                String spath = key;
+                String[] ans = spath.split("");
+
+                System.out.println();
+                System.out.println("Shortest path:");
+                for(int i = 0; i < ans.length; i++){
+                    System.out.print(ans[i]);
+                    if(i != ans.length-1)
+                        System.out.print(", ");
+                }
+            }
+        });
+        //----------------------------------------------------------------------
     }
 }
