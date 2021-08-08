@@ -1,5 +1,5 @@
 import java.io.File;
-import java.util.Scanner;
+import java.util.*;
 
 public class BasicDFS {
     static boolean[] visit;
@@ -7,13 +7,42 @@ public class BasicDFS {
     static int[] path;
     static int p, N, E;
 
+    // an array with two indexes to store path weightages. Lowest weight will be saved in the 0th index
+    static int[] weights = {Integer.MAX_VALUE, 0};
+    // ann array list to store the shortest path nodes
+    static List<Integer> shortestPath = new ArrayList<>();;
+
     static void rec(int cur, int end) {
+        // we make the initil weightage of every path 0
+        weights[1] = 0;
+        
         // if we have reached the end node, the we print the path and exit
         if (cur == end) {
             for (int i=0; i<p; i++) {
                 System.out.print(path[i] + ", ");
+                // check for i value to be greater than 0 to avoid the ArrayIndexOutfBounds exception
+                if(i>0)
+                    weights[1] += arr[path[i-1]][path[i]];
+                // add the weight of final edge    
+                if(i==p-1)
+                    weights[1] += arr[path[i]][end];
             }
             System.out.println(end);
+            
+            // if the lowest path weight is greater than the current path weight this part is executed
+            if(weights[0]>weights[1]) {
+                // initially the shortestPath array list is cleared
+                shortestPath.clear();
+
+                // then add the nodes of the new path
+                for (int i=0; i<p; i++) {
+                    shortestPath.add(path[i]);
+                }
+
+                // assign the shortest path weight with current path weight
+                weights[0] = weights[1];
+            }
+            System.out.println("Path weight = " + weights[1]);
             return;
         }
 
@@ -70,6 +99,11 @@ public class BasicDFS {
         System.out.println();
 
         // recurse from node 1 to until we find node 6
-        rec(1,6);
+        rec(1,N);
+        
+        // print the shortest path (path with the least weight)
+        for (int i: shortestPath)
+            System.out.print(i + ", ");
+        System.out.println(N + " is the shortest path in terms of weightages.");
     }
 }
