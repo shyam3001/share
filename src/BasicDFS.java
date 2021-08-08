@@ -1,19 +1,38 @@
 import java.io.File;
-import java.util.Scanner;
+import java.util.*;
 
 public class BasicDFS {
     static boolean[] visit;
     static int[][] arr;
     static int[] path;
     static int p, N, E;
+    static int[] weights = {Integer.MAX_VALUE, 0};
+    static List<Integer> shortestPath = new ArrayList<>();;
 
     static void rec(int cur, int end) {
+        weights[1] = 0;
+        
         // if we have reached the end node, the we print the path and exit
         if (cur == end) {
             for (int i=0; i<p; i++) {
                 System.out.print(path[i] + ", ");
+                if(i>0)
+                    weights[1] += arr[path[i-1]][path[i]];
+                if(i==p-1)
+                    weights[1] += arr[path[i]][end];
             }
             System.out.println(end);
+            
+            if(weights[0]>weights[1]) {
+                shortestPath.clear();
+                for (int i=0; i<p; i++) {
+                    shortestPath.add(path[i]);
+                }
+                
+                weights[0] = weights[1];
+            }
+            System.out.println("Path weight = " + weights[1]);
+            System.out.println(shortestPath);
             return;
         }
 
@@ -70,6 +89,10 @@ public class BasicDFS {
         System.out.println();
 
         // recurse from node 1 to until we find node 6
-        rec(1,6);
+        rec(1,N);
+        
+        for (int i: shortestPath)
+            System.out.print(i + ", ");
+        System.out.println(N + " is the shortest path in terms of weightages.");
     }
 }
