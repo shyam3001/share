@@ -1,6 +1,5 @@
 import csv
 
-
 def grade(mark):
     grade_table = [(90, 'A+'), (80, 'A'), (75, 'A-'), (70, 'B+'), (65, 'B'), (60, 'B-'), (55, 'C+'), (45, 'C'), (40, 'C-'), (35, 'D'), (30, 'E')]
     for v, g in grade_table:
