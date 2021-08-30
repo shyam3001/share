@@ -8,7 +8,7 @@ public class FileManager {
         try(FileWriter fileWriter = new FileWriter("output.txt", true)) {
             try(PrintWriter out = new PrintWriter(fileWriter)) {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(5000);
                 }
                 catch(InterruptedException e) {
                 }
