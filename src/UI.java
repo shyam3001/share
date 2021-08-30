@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class UI {
     public static void main(String[] args) {
@@ -22,6 +21,11 @@ public class UI {
         frame.add(button);
         frame.getRootPane().setDefaultButton(button);
 
+        final JButton button1 = new JButton();
+        button1.setBounds(40, 200, 300, 40);
+        button1.setText("Stop Everything");
+        frame.add(button1);
+
         final FileManager fileManager = new FileManager();
         final LogicManager logicManager = new LogicManager(fileManager);
         final ExecutorService threadPool = Executors.newCachedThreadPool();
@@ -30,7 +34,6 @@ public class UI {
             while (true) {
                 logicManager.consumeText();
             }
-
         };
         threadPool.submit(consumer);
         threadPool.submit(consumer);
@@ -49,4 +52,3 @@ public class UI {
         frame.setVisible(true);
     }
 }
-g
