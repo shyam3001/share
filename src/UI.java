@@ -41,11 +41,9 @@ public class UI {
 
         button.addActionListener(e -> {
             String text = textField.getText();
-
-            Runnable producer = () -> {
+            threadPool.submit(() -> {
                 logicManager.produceText(text);
-            };
-            threadPool.submit(producer);
+            });
             textField.setText("");
         });
 
