@@ -26,7 +26,12 @@ public class UI {
         button1.setText("Stop Everything");
         frame.add(button1);
 
-        final FileManager fileManager = new FileManager();
+        final JTextField textField1 = new JTextField();
+        textField1.setBounds(40, 280, 300, 40);
+        textField1.setEditable(false);
+        frame.add(textField1);
+
+        final FileManager fileManager = new FileManager(textField, textField1);
         final LogicManager logicManager = new LogicManager(fileManager);
         final ExecutorService threadPool = Executors.newCachedThreadPool();
 
