@@ -20,10 +20,21 @@ public class UI {
         frame.getRootPane().setDefaultButton(button);
 
         final FileManager fileManager = new FileManager();
+        final LogicManager logicManager = new LogicManager(fileManager);
+
+        Thread consumerThread = new Thread(() -> {
+            while (true) {
+                logicManager.consumeText();
+            }
+        });
+        consumerThread.start();
 
         button.addActionListener(e -> {
             String text = textField.getText();
-            fileManager.writeToFile(text);
+            Thread producerThread = new Thread(() -> {
+                logicManager.produceText(text);
+            });
+            producerThread.start();
             textField.setText("");
         });
 
