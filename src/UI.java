@@ -1,4 +1,7 @@
 import javax.swing.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class UI {
     public static void main(String[] args) {
@@ -21,23 +24,29 @@ public class UI {
 
         final FileManager fileManager = new FileManager();
         final LogicManager logicManager = new LogicManager(fileManager);
+        final ExecutorService threadPool = Executors.newCachedThreadPool();
 
-        Thread consumerThread = new Thread(() -> {
+        Runnable consumer = () -> {
             while (true) {
                 logicManager.consumeText();
             }
-        });
-        consumerThread.start();
+
+        };
+        threadPool.submit(consumer);
+        threadPool.submit(consumer);
+        threadPool.submit(consumer);
 
         button.addActionListener(e -> {
             String text = textField.getText();
-            Thread producerThread = new Thread(() -> {
+
+            Runnable producer = () -> {
                 logicManager.produceText(text);
-            });
-            producerThread.start();
+            };
+            threadPool.submit(producer);
             textField.setText("");
         });
 
         frame.setVisible(true);
     }
 }
+g
