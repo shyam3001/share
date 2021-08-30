@@ -47,6 +47,10 @@ public class UI {
             textField.setText("");
         });
 
+        button1.addActionListener(e -> {
+            threadPool.shutdownNow();
+        });
+
         frame.setVisible(true);
     }
 }

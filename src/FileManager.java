@@ -9,10 +9,11 @@ public class FileManager {
             try(PrintWriter out = new PrintWriter(fileWriter)) {
                 try {
                     Thread.sleep(5000);
+                    out.println(text);
                 }
                 catch(InterruptedException e) {
+                    System.out.println("Interrupting: " + text);
                 }
-                out.println(text);
             }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
