@@ -18,8 +18,10 @@ public class FileManager {
                 try {
                     Thread.sleep(5000);
                     out.println(text);
-                    textField1.setText("Wrote: " + text);
-                    textField.requestFocus();
+                    SwingUtilities.invokeLater(() -> {
+                        textField1.setText("Wrote: " + text);
+                        textField.requestFocus();
+                    });
                 }
                 catch(InterruptedException e) {
                     System.out.println("Interrupting: " + text);
