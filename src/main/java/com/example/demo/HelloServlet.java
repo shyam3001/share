@@ -17,16 +17,18 @@ public class HelloServlet extends HttpServlet {
             // update database here
             System.out.println("Updating Database");
 
-            try {
-                // send the email here
-                System.out.println("Trying to Send Email");
-                // assume it takes 10 seconds to send the email
-                Thread.sleep(10000);
-                System.out.println("Email sent");
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-            }
+            new Thread(() -> {
+                try {
+                    // send the email here
+                    System.out.println("Trying to Send Email");
+                    // assume it takes 10 seconds to send the email
+                    Thread.sleep(10000);
+                    System.out.println("Email sent");
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
 
             System.out.println("Request Dispatching...");
             req.getRequestDispatcher("next-page.jsp").forward(req, resp);
