@@ -14,6 +14,21 @@ public class HelloServlet extends HttpServlet {
 
         // check with database
         if (username.equals("abc") && password.equals("123")) {
+            // update database here
+            System.out.println("Updating Database");
+
+            try {
+                // send the email here
+                System.out.println("Trying to Send Email");
+                // assume it takes 10 seconds to send the email
+                Thread.sleep(10000);
+                System.out.println("Email sent");
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("Request Dispatching...");
             req.getRequestDispatcher("next-page.jsp").forward(req, resp);
         }
         else {
