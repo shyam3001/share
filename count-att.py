@@ -18,6 +18,7 @@ for file in list:
                 dict[k] = v
 
     fout = open('attendance_'+file[13:], 'w')
+    fout.write('Name, Duration\n')
     for k, v in dict.items():
         res = '{0}, {1}h {2}m\n'.format(k, v//60, v%60)
         fout.write(res)
