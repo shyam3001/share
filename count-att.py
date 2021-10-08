@@ -1,27 +1,45 @@
 import os, re
 
+print('')
+print('--------------------------------------------------------------------')
+print('')
+print('Welcome to the attendance duration counter\n')
+
 list = [ file for file in os.listdir('.') if file.startswith('participants') ]
 
-for file in list:
-    fin = open(file,'r')
+print('We found {0} files matching the Zoom chat log:'.format(len(list)))
+for file_in in list:
+    print(' - ' + file_in)
+print('')
 
-    lines = sorted(fin.readlines()[1:])
-    dict = {}
-    for line in lines:
-        line = line.split(',')
-        if len(line) > 4:
-            k = line[0]
-            v = int(line[4])
-            if k in dict:
-                dict[k] = dict[k] + v
-            else:
-                dict[k] = v
+file_in = input('Enter input file name: ')
+file_out = file_in+'_added.csv'
 
-    fout = open('attendance_'+file[13:], 'w')
-    fout.write('Name, Duration\n')
-    for k, v in dict.items():
-        res = '{0}, {1}h {2}m\n'.format(k, v//60, v%60)
-        fout.write(res)
+fin = open(file_in,'r')
 
-    fin.close()
-    fout.close()
+lines = sorted(fin.readlines()[1:])
+dict = {}
+for line in lines:
+    line = line.split(',')
+    if len(line) > 4:
+        k = line[0]
+        v = int(line[4])
+        if k in dict:
+            dict[k] = dict[k] + v
+        else:
+            dict[k] = v
+
+fout = open(file_out, 'w')
+fout.write('Name, Duration\n')
+for k, v in dict.items():
+    res = '{0}, {1}h {2}m\n'.format(k, v//60, v%60)
+    fout.write(res)
+
+fin.close()
+fout.close()
+
+print('')
+print('Written total attended duration to output file: {0}'.format(file_out))
+print('')
+print('--------------------------------------------------------------------')
+print('')
