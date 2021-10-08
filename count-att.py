@@ -17,7 +17,7 @@ file_out = file_in+'_added.csv'
 
 fin = open(file_in,'r')
 
-lines = sorted(fin.readlines()[1:])
+lines = fin.readlines()[1:]
 dict = {}
 for line in lines:
     line = line.split(',')
@@ -29,9 +29,21 @@ for line in lines:
         else:
             dict[k] = v
 
+resultdict = {}
+for k,v in dict.items():
+    x = re.findall('[iI][tT]\d{8}', k)
+    if len(x)>=1:
+        k = x[0].upper()
+    if k in resultdict:
+        resultdict[k] = resultdict[k] + v
+    else:
+        resultdict[k] = v
+
+dict = resultdict
+
 fout = open(file_out, 'w')
 fout.write('Name, Duration\n')
-for k, v in dict.items():
+for k, v in sorted(dict.items()):
     res = '{0}, {1}h {2}m\n'.format(k, v//60, v%60)
     fout.write(res)
 
