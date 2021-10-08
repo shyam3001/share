@@ -1,0 +1,40 @@
+02:21:28	IT17154086 Kalansooriya D.M.T.K:	no sir
+02:21:29	IT17175494_Perera W. S. M:	No sir
+02:21:29	IT18156898 Qamra N.N.:	No sir
+02:21:36	IT18118346 - Dinusha Dilshan Siyasinghe:	no sir
+02:21:39	IT18156720_Liyanage Y.A:	No sir
+02:21:40	IT18015522_Niroshini V.:	No sir
+02:21:48	Revathy T.  IT17165662:	no sir
+02:37:03	Revathy T.  IT17165662:	what are the skills need to become a UI/UX engineer
+02:38:18	IT18030204 - Delu:	How a UI/UX engineer is selected in a company ?
+02:38:52	Chamikara G.M.N.:	Sir, what industry expects from an intern as a UI/UX designer? especially in interview
+02:39:00	IT17175494_Perera W. S. M:	Can you explained bit about figma?
+02:39:23	IT18158328 - Jananjaya M.A.C.:	Are there considerable amount  of job opportunities regarding UI designing in Sri Lanka?
+02:41:50	IT18118346 - Dinusha Dilshan Siyasinghe:	Should developers interact heavily with the ui designers during all the test design cycles?
+02:41:54	IT18030204 - Delu:	And how the CV should be when applying ?
+02:42:57	IT18015522_Niroshini V.:	What is the different between UX designer and UX engineer?
+02:46:03	IT17154086 Kalansooriya D.M.T.K:	Sir should ui ux designer have code knowledge or design knowledge or both
+02:49:41	Chamikara G.M.N.:	Sir , when designing UI how we can select a modern theme ? Is that depend on the client's requirement ? can you give few tips to improve the attractive UI design ? (ex: Selecting colors)
+02:51:07	Hashani Jayasinghe:	How should we select colors or themes when we designing applications?
+02:54:36	IT18030204 - Delu:	Can you share some simple figma design links with us?
+02:57:03	IT18038460 Munsil M.M.M:	No. you are doing good. Mr. Eranga
+02:57:33	IT18195262:	are there any set of laws UX designers should follow such as Jakob's law?
+02:58:47	IT18172010  Chandima P.H.P.A.:	which is the best software  for ui designing
+03:11:32	it18184686 Abeyratne S.M.L.B.:	What if we use MERN stack for the record management system?
+03:18:44	IT18030204 - Delu:	To: Saman sir, when we have to start the system design plan and submit the design for that specific sprint ?
+03:30:39	Faculty of Computing:	You need to start soon on DD1 if not started already. You have your submission coming on Tuesday
+03:34:37	IT18030204 - Delu:	Sir, can you mention the deadlines in the teams please...
+03:34:52	Faculty of Computing:	OK we will
+03:39:47	Eranga Gunawardana:	eranga.ravindu@gmail.com
+03:41:45	IT18156898 Qamra N.N.:	Thank you sir
+03:41:49	Chamikara G.M.N.:	Thank you
+03:41:53	IT18172010  Chandima P.H.P.A.:	Thankyou
+03:41:53	IT18156720_Liyanage Y.A:	Good session about UX/UI, Thank you sir!!
+03:41:53	IT17125826 - Dilanka:	thank you
+03:41:54	IT18195262:	Thank you sir
+03:41:55	Chamikara G.M.N.:	Thank you
+03:41:56	IT18015522_Niroshini V.:	Thank you sir
+03:41:56	Revathy T.  IT17165662:	thank you sir
+03:41:57	IT17154086 Kalansooriya D.M.T.K:	thank you sir
+03:42:05	IT18118346 - Dinusha Dilshan Siyasinghe:	thank you
+03:42:05	it18184686 Abeyratne S.M.L.B.:	Thank you sir
